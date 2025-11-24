@@ -1,0 +1,61 @@
+Design of a Smart Home Electronic Security System Using Combinational Circuits
+Introduction
+
+The purpose of this design is to create an electronic security system for a smart home that controls access to rooms using a code or keycard. The system leverages combinational circuits, including logic gates, multiplexers, decoders, and encoders, to implement reliable and fast access control. Combinational circuits are ideal for this application because the outputs depend solely on the current inputs, making them predictable and deterministic.
+
+System Design
+Components
+
+Logic Gates
+
+AND gates: Used to ensure multiple conditions are met before granting access. For example, a correct keycard and a correct PIN code must both be validated.
+
+OR gates: Allow multiple valid inputs to grant access. For instance, multiple authorized users can access the same room.
+
+NOT gates: Invert signals when required, such as detecting an invalid code to trigger an alarm.
+
+XOR gates: Detect mismatched inputs, useful for parity checks in code verification.
+
+Multiplexers (MUX)
+
+Multiplexers select one input out of many to send to a single output line based on a control signal. In this system, MUXes can choose which room’s access code is being verified, allowing one verification circuit to serve multiple rooms.
+
+Decoders
+
+Decoders translate input codes (e.g., a 4-bit PIN or keycard data) into a one-hot output signal that activates a specific room’s access. For example, a 4-to-16 decoder can identify 16 possible codes corresponding to authorized users.
+
+Encoders
+
+Encoders perform the reverse of decoders, converting multiple input signals (such as room request buttons) into a binary code that can be processed by the logic control unit.
+
+System Operation
+
+User Input
+
+The user inputs a code via a keypad or swipes a keycard. This input is converted into binary form using an encoder.
+
+Code Verification
+
+The binary input is fed into a combination of AND, OR, and XOR gates configured to compare it against stored authorized codes.
+
+If the input matches any authorized code, a logic high (1) signal is generated.
+
+Room Selection
+
+A multiplexer selects the appropriate room access line based on the user’s input or request.
+
+The decoder activates the specific room’s door mechanism if the verification signal is high.
+
+Access Grant/Alarm
+
+When the verification output is true, the door unlocks via an electronic latch.
+
+If verification fails, a NOT gate triggers an alarm.
+
+Integration of a Demultiplexor
+
+To efficiently handle multiple rooms, a demultiplexor can be integrated to distribute a single control signal to multiple outputs corresponding to different rooms. The demultiplexor takes the verified access signal and, based on the room selection input, directs it to the correct room’s electronic lock. This reduces the need for multiple verification circuits and simplifies wiring while ensuring that each room’s access is independently controlled.
+
+Conclusion
+
+This smart home security system demonstrates the practical use of combinational logic circuits. Logic gates perform fundamental verification, multiplexers manage multiple rooms, decoders identify authorized codes, and demultiplexors efficiently distribute access signals. Using this approach ensures a reliable, modular, an
